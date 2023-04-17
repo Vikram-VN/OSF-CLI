@@ -146,7 +146,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ configure --appName blank-store --appServerAdmin http://someserver.oracle.com:9080 --appKey
   yarn occ configure --httpPort 5050 --httpsPort 5051
   yarn occ configure --list
@@ -170,7 +170,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-app @acme/my-app
   yarn occ create-app --template blank-store
   yarn occ create-app @acme/my-app --template blank-store
@@ -193,7 +193,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ configure-app --localDevAppName marcus-app
   yarn occ configure-app --list
   ```
@@ -221,7 +221,7 @@
 
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ build
   yarn occ build marcus-app --production--watch
   ```
@@ -265,7 +265,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ deploy blank-store --no-build
   yarn occ deploy blank-store --tag commit1234 --tag version 1.0.0
   yarn occ deploy --zipFile ./somefile.zip
@@ -297,7 +297,7 @@
 
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ redeploy --appServerAdmin http://someserver.oracle.com --appKey
   yarn occ redeploy storefront --live
   ```
@@ -339,7 +339,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ deploy-log marcus-app
   yarn occ deploy-log marcus-app --limit 10
   ```
@@ -371,7 +371,7 @@
 
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ deploy-status marcus-app
   yarn occ deploy-status marcus-app --json  --last
   ```
@@ -397,7 +397,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ output marcus-app
   yarn occ output marcus-app --deployType full  --ignore *.log
   ```
@@ -426,7 +426,7 @@
   ```   
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ delete marcus-app
   yarn occ delete marcus-app --publishAll
   ```
@@ -456,7 +456,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ download marcus-app
   yarn occ download marcus-app --live true
   ```
@@ -482,7 +482,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ list-apps
   yarn occ list-apps --serverEnv development
   ```
@@ -511,7 +511,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ set-logging-options
   yarn occ set-logging-options --appLogLevel 2
   ```
@@ -541,7 +541,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ upgrade
   yarn occ upgrade --dryRun
   yarn occ upgrade --acceptDowngrade 4.0.0
@@ -577,7 +577,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ download-assets my-app
   yarn occ download-assets my-app --reset
   yarn occ download-assets my-app --fromFile ./assets.zip
@@ -605,7 +605,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ upload-search-config marcus-app
   yarn occ upload-search-config marcus-app --no-localDevAppName
   ```
@@ -632,7 +632,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ upload-custom-typeahead-keywords marcus-app
   yarn occ upload-custom-typeahead-keywords marcus-app --help
   ```
@@ -672,7 +672,7 @@
   ``` 
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ serve marcus-app
   yarn occ serve marcus-app --appServer http://a-vm.us.oracle.com:8080
   ```
@@ -699,7 +699,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-template marcus-app --dest archives-directory
   yarn occ create-template marcus-app --ignore *.log --deployType full --dest archives-directory
   ```
@@ -721,7 +721,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-widget --name MyWidget
   yarn occ create-widget blank-store --name MyWidget
   yarn occ create-widget blank-store --name MyWidget --template CurrencySelector
@@ -745,7 +745,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-fetcher --name MyWidget
   yarn occ create-fetcher --name myFetcher --endpoint anEndpoint --selector aSelector
   yarn occ create-fetcher --name myFetcher --endpoint anEndpoint --selector aSelector --forComponent HelloWorld
@@ -768,7 +768,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-action --name myAction
   yarn occ create-action --name myAction --endpoint
   yarn occ create-action --endpoint anEndpoint
@@ -795,7 +795,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-selector --name mySelector --repository myRepository
   yarn occ create-selector --name mySelector --repository myRepository --table myTable
   yarn occ create-selector --name mySelector --repository myRepository --table myTable --entityId myEntityId
@@ -825,7 +825,7 @@
   ```  
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-endpoint --directoryName aDirectoryName --swagger http://example.com/catalogApi
   yarn occ create-endpoint --directoryName aDirectoryName --swagger http://example.com/catalogApi --endpoints endpointId1,endpointId2
   yarn occ create-endpoint --directoryName aDirectoryName --url http://example.com/catalogApi --verb [method]
@@ -848,7 +848,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ list-endpoints --swagger http://example.com/catalogApi
   yarn occ list-endpoints --swagger http://example.com/organizationApi
   ```
@@ -868,7 +868,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ create-subscriber --name mySubscriber
   ```
 
@@ -885,7 +885,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ validate-assets
   yarn occ validate-assets marcus-app
   ```
@@ -906,7 +906,7 @@
   ```
 
 ### Examples:
-  ```Shell
+  ```PowerShell
   yarn occ version
   yarn occ version --serverEnv development
   ```
