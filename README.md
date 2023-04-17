@@ -1,6 +1,76 @@
 # Oracle-Commerce-Cloud (CX) CLI Document
 
-## Usage: cli [options] [command]
+
+## Table of Contents
+  1) [Options](#1-options)    
+  
+  2) [Configure](#2-configure)
+
+  3) [Create-App](#3-create-app)
+
+  4) [Configure-App](#4-configure-app)
+
+  5) [Build](#5-build)
+
+  6) [Deploy](#6-deploy)
+
+  7) [Redeploy](#7-redeploy)
+
+  8) [Deploy-Log](#8-deploy-log)
+
+  9) [Deploy-Status](#9-deploy-status)
+
+ 10) [Output](#10-output)
+
+ 11) [Delete](#11-delete)
+
+ 12) [Download](#12-download)
+     
+ 13) [List-Apps](#13-list-apps)
+
+ 14) [Set-Logging-Options](#14-set-logging-options)
+
+ 15) [Upgrade](#15-upgrade)
+
+ 16) [Download-Assets](#16-download-assets)
+
+ 17) [Upload-Search-Config](#17-upload-search-config)
+
+ 18) [Upload-Custom-TypeHead-KeyWords](#18-upload-custom-typehead-keywords)
+
+ 19) [Server](#19-serve)
+
+ 20) [Create-Template](#20-create-template)
+
+ 21) [Create-Widget](#21-create-widgete)
+
+ 22) [Create-Fetcher](#22-create-fetcher)
+
+ 23) [Create-Action](#23-creation-action)
+     
+ 24) [Create-Selector](#24-create-selector)
+
+ 25) [Create-Endpoint](#25-create-endpoint)
+
+ 26) [List-Endpoints](#26-list-endpoints)
+
+ 27) [Create-Subscriber](#27-create-subscriber)
+
+ 28) [Validate-Assets](#28-validate-assets)
+
+ 29) [Version](#29-version)
+
+ 30) [Coming-Soon](#30-coming-soon)
+
+
+
+
+
+
+
+## 1) OCC Options
+
+### Usage: yarn occ [options] [command]
 
 ### Options:
   ```PowerShell
@@ -11,30 +81,30 @@
 ### Commands:
   ```PowerShell
   configure [options]                                   Updates workspace configuration.
-  configure-app [options] [appName]                     Updates application configuration.
-  build [options] [appName]                             Build an occ application.
-  deploy [options] [appName]                            Deploy an occ application bundle
+  configure-app [appName] [options]                     Updates application configuration.
+  build [appName] [options]                             Build an occ application.
+  deploy [appName] [options]                            Deploy an occ application bundle
   redeploy [options] [clusterId]                        Instructs admin to resend either the preview or live deployment to the given cluster.
-  deploy-log [options] [appName]                        Query the deployment logs for an application.
-  deploy-status [options] [appName]                     Queries the deployment status for an application.
-  output [options] [appName]                            Generates the deployment files for the given app.
-  delete [options] [appName]                            Deletes an occ application from OCC Admin.
-  download [options] [appName]                          Download the current deployment for an application
+  deploy-log [appName] [options]                        Query the deployment logs for an application.
+  deploy-status [appName] [options]                     Queries the deployment status for an application.
+  output [appName] [options]                            Generates the deployment files for the given app.
+  delete [appName] [options]                            Deletes an occ application from OCC Admin.
+  download [appName] [options]                          Download the current deployment for an application
   list-apps [options]                                   List the available applications and clusters on the server.
   set-logging-options [options] [clusterId]             Sets various logging options for the given cluster.
   upgrade [options] [version]                           Upgrade the versions of OSF packages depended on throughout the workspace.
-  download-assets [options] [appName]                   Downloads the assets from design studio and writes them to the workspace
-  upload-search-config [options] [appName]              Upload the search configuration
-  upload-custom-typeahead-keywords [options] [appName]  Reads the custom keyword records from the 'config/search/data/keywords.js' in the app, and appends them to the existing elements in the '/gsdata/v1/cloud/data/keywords' record collection.
-  serve [options] [appName]                             Start presentation server [localhost]
-  create-template [options] [appName]                   Creates a workspace template archive containing the given app.        
-  create-widget [options] [appName]                     Create a widget plugin for a specific application.
-  create-fetcher [options] [appName]                    Create a fetcher for a specific application.
-  create-action [options] [appName]                     Create an action for a specific application.
-  create-selector [options] [appName]                   Create a selector for a specific application. Please refer to the example in the sample application, or the OSF documentation.       
-  create-endpoint [options] [appName]                   Create endpoint(s) for a URL or from a Swagger API document.
+  download-assets [appName] [options]                   Downloads the assets from design studio and writes them to the workspace
+  upload-search-config [appName] [options]              Upload the search configuration
+  upload-custom-typeahead-keywords [appName] [options]  Reads the custom keyword records from the 'config/search/data/keywords.js' in the app, and appends them to the existing elements in the '/gsdata/v1/cloud/data/keywords' record collection.
+  serve [appName] [options]                             Start presentation server [localhost]
+  create-template [appName] [options]                   Creates a workspace template archive containing the given app.        
+  create-widget [appName] [options]                     Create a widget plugin for a specific application.
+  create-fetcher [appName] [options]                    Create a fetcher for a specific application.
+  create-action [appName] [options]                     Create an action for a specific application.
+  create-selector [appName] [options]                   Create a selector for a specific application. Please refer to the example in the sample application, or the OSF documentation.       
+  create-endpoint [appName] [options]                   Create endpoint(s) for a URL or from a Swagger API document.
   list-endpoints [options]                              List all available endpoints from a Swagger API document.
-  create-subscriber [options] [appName]                 Create a subscriber for named application.
+  create-subscriber [appName] [options]                 Create a subscriber for named application.
   create-app [options] [appPackageName]                 Create a new app in an existing workspace from an accelerator template.
   validate-assets [appName]                             Validate all assets, including components, containers, pages and slots for the application.
   version [options]                                     List the version of various OSF elements on the workspace, and the Oracle Commerce Cloud version.
@@ -42,9 +112,9 @@
   ```
 
 
+## 2) Configure
 
-
-## Usage: cli configure [options]
+### Usage: yarn occ configure [options]
 
 **Updates workspace configuration.**
 
@@ -82,9 +152,9 @@
   yarn occ configure --list
   ```
 
+## 3) Create-App
 
-
-## Usage: cli create-app [options] [appPackageName]
+### Usage: yarn occ create-app [options] [appPackageName]
 
 **Create a new app in an existing workspace from an accelerator template.**
 
@@ -108,9 +178,9 @@
   ```
 
 
+## 4) Configure-App
 
-
-## Usage: cli configure-app [options] [appName]
+### Usage: yarn occ configure-app [appName] [options]
 
 **Updates application configuration.**
 
@@ -129,9 +199,9 @@
   ```
 
 
+## 5) Build
 
-
-## Usage: cli build [options] [appName]
+### Usage: yarn occ build [appName] [options]
 
 **Build an occ application.**
 
@@ -158,9 +228,9 @@
 
 
 
+## 6) Deploy
 
-
-## Usage: cli deploy [options] [appName]
+### Usage: yarn occ deploy [appName] [options]
 
 **Deploy an occ application bundle**
 
@@ -181,7 +251,7 @@
   --no-validation                Do not validate assets when running yarn deploy.
   --replaceApp <appName>         When specified the application being deployed will replace this application in the hosted sandbox
   --zipFile [zip file location]  Deploy a specific zip file. The app name used to deploy is extracted from the zip.
-  -t, --tag <value>              Associate a custom value with the deployment. This value will be included as part of the deployment's metadata (default: [])
+  -t, --tag <value>              Associate a custom value with the deployment. This value will be included as part of the deployments metadata (default: [])
   -p, --publish                  With this option, any changes from the deploy/delete will be published.
   --publishAll [confirm]         With this option, all changes in the publishing queue will be published. You will be prompted to confirm this option. Optionally, the prompt can be bypassed by specifying 'Y'
   --no-build                     Skip the production build before deploying
@@ -202,9 +272,9 @@
   ```
 
 
+## 7) Redeploy
 
-
-## Usage: cli redeploy [options] [clusterId]
+### Usage: yarn occ redeploy [options] [clusterId]
 
 **Instructs admin to resend either the preview or live deployment to the given cluster.**
 
@@ -233,9 +303,9 @@
   ```
 
 
-
+## 8) Deploy-Log
  
-## Usage: cli deploy-log [options] [appName]
+### Usage: yarn occ deploy-log [appName] [options]
 
 **Query the deployment logs for an application.**
 
@@ -275,9 +345,9 @@
   ```
   
 
+## 9) Deploy-Status
 
-
-## Usage: cli deploy-status [options] [appName]
+### Usage: yarn occ deploy-status [appName] [options]
 
 **Queries the deployment status for an application.**
 
@@ -286,7 +356,7 @@
   -c, --cluster [clusterId]    Return a cluster specific result. Provide a clusterId to change which cluster is targeted.
   -d, --deployment <deployId>  Query information for a specific deployment
   -j, --json                   Output the results as raw JSON instead of formatted text.
-  --last                       Check the status of an application's last deployment from this workspace
+  --last                       Check the status of an applications last deployment from this workspace
   -V, --version                output the version number       
   -v, --verbose                Provides verbose logging where available
   --no-verbose                 Disables verbose logging        
@@ -307,9 +377,9 @@
   ```
 
 
+## 10) Output
 
-
-## Usage: cli output [options] [appName]
+### Usage: yarn occ output [appName] [options]
 
 **Generates the deployment files for the given app.**
 
@@ -333,11 +403,11 @@
   ```
 
 
-
+## 11) Delete
  
-## Usage: cli delete [options] [appName]
+### Usage: yarn occ delete [appName] [options]
 
-**Deletes an occ application from OCC Admin.**
+**Deletes an occ application from OCC Admin Server.**
 
 ### Options:
   ```PowerShell
@@ -362,9 +432,9 @@
   ```
 
 
+## 12) Download
 
-
-## Usage: cli download [options] [appName]
+### Usage: yarn occ download [appName] [options]
 
 **Download the current deployment for an application**
 
@@ -392,9 +462,9 @@
   ```
 
 
+# 13) List-Apps
 
-
-## Usage: cli list-apps [options]
+### Usage: yarn occ list-apps [options]
 
 **List the available applications and clusters on the server.**
 
@@ -418,9 +488,9 @@
   ```
 
 
+## 14) Set-Logging-Options
 
-
-## Usage: cli set-logging-options [options] [clusterId]
+### Usage: yarn occ set-logging-options [options] [clusterId]
 
 **Sets various logging options for the given cluster.**
 
@@ -447,15 +517,15 @@
   ```
 
 
+## 15) Upgrade
 
-
-## Usage: cli upgrade [options] [version]
+### Usage: yarn occ upgrade [options] [version]
 
 **Upgrade the versions of OSF packages depended on throughout the workspace.**
 
 ### Options:
   ```PowerShell
-  --dryRun                    Don't make any actual changes, just list what changes would be made.
+  --dryRun                    Do not make any actual changes, just list what changes would be made.
   --latest                    Upgrade to the latest version, regardless of BREAKING CHANGES from the current OSF version      
   --acceptDowngrade           If the current OSF version is too new for the OCC server, downgrade to the latest OSF version that matches the OCC server
   --force                     Instead of exiting when unable to contact the registry/OCC Servers, found version incompatibilities, or encountered other errors, attempt to continue. MUST be used with a specific version of OSF (e.g. 'occ upgrade 2.0.0 --force')
@@ -479,9 +549,9 @@
   ```
 
 
+## 16) Download-Assets
 
-
-## Usage: cli download-assets [options] [appName]
+### Usage: yarn occ download-assets [appName] [options]
 
 **Downloads the assets from design studio and writes them to the workspace**
 
@@ -514,9 +584,9 @@
   ```
 
 
+## 17) Upload-Search-Config
 
-
-## Usage: cli upload-search-config [options] [appName]
+### Usage: yarn occ upload-search-config [appName] [options]
 
 **Upload the search configuration**
 
@@ -541,8 +611,9 @@
   ```
 
 
+## 18) Upload-Custom-TypeHead-KeyWords
 
-## Usage: cli upload-custom-typeahead-keywords [options] [appName]
+### Usage: yarn occ upload-custom-typeahead-keywords [appName] [options]
 
 **Reads the custom keyword records from the 'config/search/data/keywords.js' in the app, and appends them to the existing elements in the '/gsdata/v1/cloud/data/keywords' record collection.** 
 
@@ -568,9 +639,9 @@
 
 
 
+## 19) Serve
 
-
-## Usage: cli serve [options] [appName]
+### Usage: yarn occ serve [appName] [options]
 
 **Start presentation server [localhost]**
 
@@ -607,9 +678,9 @@
   ```
 
 
+## 20) Create-Template
 
-
-## Usage: cli create-template [options] [appName]
+### Usage: yarn occ create-template [appName] [options]
 
 **Creates a workspace template archive containing the given app.**
 
@@ -635,7 +706,9 @@
 
 
 
-## Usage: cli create-widget [options] [appName]
+## 21) Create-Widget
+
+### Usage: yarn occ create-widget [appName] [options]
 
 **Create a widget plugin for a specific application.**
 
@@ -656,8 +729,9 @@
 
 
 
+## 22) Create-Fetcher
 
-## Usage: cli create-fetcher [options] [appName]
+### Usage: yarn occ create-fetcher [appName] [options]
 
 **Create a fetcher for a specific application.**
 
@@ -679,8 +753,9 @@
 
 
 
+## 23) Creation-Action
 
-## Usage: cli create-action [options] [appName]
+### Usage: yarn occ create-action [appName] [options]
 
 **Create an action for a specific application.**
 
@@ -703,8 +778,9 @@
 
 
 
+## 24) Create-Selector
 
-## Usage: cli create-selector [options] [appName]
+### Usage: yarn occ create-selector [appName] [options]
 
 **Create a selector for a specific application. Please refer to the example in the sample application, or the OSF documentation.**
 
@@ -732,8 +808,9 @@
 
 
 
+## 25) Create-EndPoint
 
-## Usage: cli create-endpoint [options] [appName]
+### Usage: yarn occ create-endpoint [appName] [options]
 
 **Create endpoint(s) for a URL or from a Swagger API document.**
 
@@ -758,8 +835,9 @@
 
 
 
+## 26) List-EndPoints
 
-## Usage: cli list-endpoints [options]
+### Usage: yarn occ list-endpoints [options]
 
 **List all available endpoints from a Swagger API document.**   
 
@@ -777,8 +855,9 @@
 
 
 
+## 27) Create-Subscriber
 
-## Usage: cli create-subscriber [options] [appName]
+### Usage: yarn occ create-subscriber [appName] [options]
 
 **Create a subscriber for named application.**
 
@@ -794,7 +873,9 @@
   ```
 
 
-## Usage: cli validate-assets [options] [appName]
+## 28) Validate-Assets
+
+### Usage: yarn occ validate-assets [appName] [options]
 
 **Validate all assets, including components, containers, pages and slots for the application.**
 
@@ -811,7 +892,9 @@
 
 
 
-## Usage: cli version [options]
+## 29) Version
+
+### Usage: yarn occ version [options]
 
 **List the version of various OSF elements on the workspace, and the Oracle Commerce Cloud version.**
 
@@ -827,3 +910,5 @@
   yarn occ version
   yarn occ version --serverEnv development
   ```
+
+## 30) Coming soon...
