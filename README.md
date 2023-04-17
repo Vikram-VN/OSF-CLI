@@ -90,7 +90,7 @@
 ### Examples:
   ```PowerShell
   yarn occ build
-  yarn occ build marcus-app --production--watch
+  yarn occ build marcus-app --production --watch
   ```
 
 
