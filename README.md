@@ -2,114 +2,97 @@
 
 
 ## Table of Contents
-  1) [Options](#1-options)    
-  
+
+  1) [Build](#1-build)
+
   2) [Configure](#2-configure)
+  
+  3) [Configure-App](#3-configure-app)
 
-  3) [Create-App](#3-create-app)
+  4) [Create-Action](#4-creation-action)
 
-  4) [Configure-App](#4-configure-app)
+  5) [Create-App](#5-create-app)
 
-  5) [Build](#5-build)
+  6) [Create-Endpoint](#6-create-endpoint)
 
-  6) [Deploy](#6-deploy)
+  7) [Create-Fetcher](#7-create-fetcher)
 
-  7) [Redeploy](#7-redeploy)
+  8) [Create-Selector](#8-create-selector)
 
-  8) [Deploy-Log](#8-deploy-log)
+  9) [Create-Subscriber](#9-create-subscriber)
 
-  9) [Deploy-Status](#9-deploy-status)
+  10) [Create-Template](#10-create-template)
 
- 10) [Output](#10-output)
+  11) [Create-Widget](#11-create-widgete)
 
- 11) [Delete](#11-delete)
+  12) [Delete](#12-delete)
+  
+  13) [Deploy](#13-deploy)
+  
+  14) [Deploy-Log](#14-deploy-log)
 
- 12) [Download](#12-download)
+  15) [Deploy-Status](#15-deploy-status)
+
+  16) [Download](#16-download)
+
+  17) [Download-Assets](#17-download-assets)
+
+  18) [List-Apps](#18-list-apps)
      
- 13) [List-Apps](#13-list-apps)
+  19) [List-Endpoints](#19-list-endpoints)
 
- 14) [Set-Logging-Options](#14-set-logging-options)
+  20) [Options](#20-options)
 
- 15) [Upgrade](#15-upgrade)
+  21) [Output](#21-output)
 
- 16) [Download-Assets](#16-download-assets)
+  22) [Redeploy](#22-redeploy)
 
- 17) [Upload-Search-Config](#17-upload-search-config)
+  23) [Serve](#23-serve)
 
- 18) [Upload-Custom-TypeHead-KeyWords](#18-upload-custom-typehead-keywords)
+  24) [Set-Logging-Options](#24-set-logging-options)
 
- 19) [Server](#19-serve)
+  25) [Upgrade](#25-upgrade)
 
- 20) [Create-Template](#20-create-template)
+  26) [Upload-Custom-TypeHead-KeyWords](#26-upload-custom-typehead-keywords)
 
- 21) [Create-Widget](#21-create-widgete)
+  27) [Upload-Search-Config](#27-upload-search-config)
 
- 22) [Create-Fetcher](#22-create-fetcher)
+  28) [Validate-Assets](#28-validate-assets)
 
- 23) [Create-Action](#23-creation-action)
-     
- 24) [Create-Selector](#24-create-selector)
+  29) [Version](#29-version)
 
- 25) [Create-Endpoint](#25-create-endpoint)
-
- 26) [List-Endpoints](#26-list-endpoints)
-
- 27) [Create-Subscriber](#27-create-subscriber)
-
- 28) [Validate-Assets](#28-validate-assets)
-
- 29) [Version](#29-version)
-
- 30) [Coming-Soon](#30-coming-soon)
+  30) [Coming-Soon](#30-coming-soon)
 
 
 
 
+## 1) Build
 
+### Usage: yarn occ build [appName] [options]
 
-
-## 1) OCC Options
-
-### Usage: yarn occ [options] [command]
+**Build an occ application.**
 
 ### Options:
   ```PowerShell
-  -V, --version                                         output the version number
-  -h, --help                                            display help for command
+  -V, --version     output the version number
+  -v, --verbose     Provides verbose logging where available
+  --no-verbose      Disables verbose logging
+  --legacy          Generate legacy client code when building
+                    in development mode.
+  -p, --production  Build an occ application in production
+                    mode.
+  -w, --watch       Watch for changes when building in
+                    development mode.
+  -h, --help        display help for command
   ```
 
-### Commands:
+
+### Examples:
   ```PowerShell
-  configure [options]                                   Updates workspace configuration.
-  configure-app [appName] [options]                     Updates application configuration.
-  build [appName] [options]                             Build an occ application.
-  deploy [appName] [options]                            Deploy an occ application bundle
-  redeploy [options] [clusterId]                        Instructs admin to resend either the preview or live deployment to the given cluster.
-  deploy-log [appName] [options]                        Query the deployment logs for an application.
-  deploy-status [appName] [options]                     Queries the deployment status for an application.
-  output [appName] [options]                            Generates the deployment files for the given app.
-  delete [appName] [options]                            Deletes an occ application from OCC Admin.
-  download [appName] [options]                          Download the current deployment for an application
-  list-apps [options]                                   List the available applications and clusters on the server.
-  set-logging-options [options] [clusterId]             Sets various logging options for the given cluster.
-  upgrade [options] [version]                           Upgrade the versions of OSF packages depended on throughout the workspace.
-  download-assets [appName] [options]                   Downloads the assets from design studio and writes them to the workspace
-  upload-search-config [appName] [options]              Upload the search configuration
-  upload-custom-typeahead-keywords [appName] [options]  Reads the custom keyword records from the 'config/search/data/keywords.js' in the app, and appends them to the existing elements in the '/gsdata/v1/cloud/data/keywords' record collection.
-  serve [appName] [options]                             Start presentation server [localhost]
-  create-template [appName] [options]                   Creates a workspace template archive containing the given app.        
-  create-widget [appName] [options]                     Create a widget plugin for a specific application.
-  create-fetcher [appName] [options]                    Create a fetcher for a specific application.
-  create-action [appName] [options]                     Create an action for a specific application.
-  create-selector [appName] [options]                   Create a selector for a specific application. Please refer to the example in the sample application, or the OSF documentation.       
-  create-endpoint [appName] [options]                   Create endpoint(s) for a URL or from a Swagger API document.
-  list-endpoints [options]                              List all available endpoints from a Swagger API document.
-  create-subscriber [appName] [options]                 Create a subscriber for named application.
-  create-app [options] [appPackageName]                 Create a new app in an existing workspace from an accelerator template.
-  validate-assets [appName]                             Validate all assets, including components, containers, pages and slots for the application.
-  version [options]                                     List the version of various OSF elements on the workspace, and the Oracle Commerce Cloud version.
-  help [command]                                        display help for command
+  yarn occ build
+  yarn occ build marcus-app --production--watch
   ```
+
 
 
 ## 2) Configure
@@ -152,7 +135,57 @@
   yarn occ configure --list
   ```
 
-## 3) Create-App
+
+
+## 3) Configure-App
+
+### Usage: yarn occ configure-app [appName] [options]
+
+**Updates application configuration.**
+
+### Options:
+  ```PowerShell
+  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
+  --no-localDevAppName         Ignore the local development application name configured for the application.
+  -l, --list                   Displays the current configuration settings
+  -h, --help                   display help for command
+  ```
+
+### Examples:
+  ```PowerShell
+  yarn occ configure-app --localDevAppName marcus-app
+  yarn occ configure-app --list
+  ```
+
+
+
+
+## 4) Creation-Action
+
+### Usage: yarn occ create-action [appName] [options]
+
+**Create an action for a specific application.**
+
+### Options:
+  ```PowerShell
+  -n, --name <action-name>  Name of the action to create. Defaults to the endpoint name if not specified.
+  --endpoint [endpoint]     Endpoint for action to invoke.     
+  --reducer                 Create a reducer that updates the application state.
+  -h, --help                display help for command
+  ```
+
+### Examples:
+  ```PowerShell
+  yarn occ create-action --name myAction
+  yarn occ create-action --name myAction --endpoint
+  yarn occ create-action --endpoint anEndpoint
+  yarn occ create-action --name myAction --endpoint anEndpoint
+  yarn occ create-action --name myAction --reducer
+  ```
+
+
+
+## 5) Create-App
 
 ### Usage: yarn occ create-app [options] [appPackageName]
 
@@ -178,57 +211,195 @@
   ```
 
 
-## 4) Configure-App
 
-### Usage: yarn occ configure-app [appName] [options]
 
-**Updates application configuration.**
+## 6) Create-EndPoint
+
+### Usage: yarn occ create-endpoint [appName] [options]
+
+**Create endpoint(s) for a URL or from a Swagger API document.**
 
 ### Options:
   ```PowerShell
+  -n, --directoryName  <name>      The directory name under which to create endpoints, relative to the default path /src/plugins/endpoints.
+  --swagger <url | file>           The URL or Path of a Swagger API document from which to create endpoint(s).
+  --url <url>                      The URL/Origin for which to create endpoint(s).
+  --verb <method>                  Method for Non Swagger API document such as Get, Put, Post.
+  --endpoints <list-of-endpoints>  Comma-separated list of endpointIds to create from the Swagger API document.
+  -h, --help                       display help for command
+  ```  
+
+### Examples:
+  ```PowerShell
+  yarn occ create-endpoint --directoryName aDirectoryName --swagger http://example.com/catalogApi
+  yarn occ create-endpoint --directoryName aDirectoryName --swagger http://example.com/catalogApi --endpoints endpointId1,endpointId2
+  yarn occ create-endpoint --directoryName aDirectoryName --url http://example.com/catalogApi --verb [method]
+  yarn occ create-endpoint --swagger http://example.com/catalogApi
+  yarn occ create-endpoint --url http://example.com/catalogApi --verb [method]
+  ```
+
+
+
+
+## 7) Create-Fetcher
+
+### Usage: yarn occ create-fetcher [appName] [options]
+
+**Create a fetcher for a specific application.**
+
+### Options:
+  ```PowerShell
+  -n, --name <fetcher-name>        Name of the fetcher plugin to create.
+  --forComponent <component-name>  Create the fetcher for a specific component, default is to create a global fetcher.        
+  --endpoint <endpoint>            An Endpoint for fetcher to invoke.
+  --selector <selector>            A Selector to be used by the fetcher to check if data exists in the state.
+  -h, --help                       display help for command
+  ```
+
+### Examples:
+  ```PowerShell
+  yarn occ create-fetcher --name MyWidget
+  yarn occ create-fetcher --name myFetcher --endpoint anEndpoint --selector aSelector
+  yarn occ create-fetcher --name myFetcher --endpoint anEndpoint --selector aSelector --forComponent HelloWorld
+  ```
+
+
+
+
+## 8) Create-Selector
+
+### Usage: yarn occ create-selector [appName] [options]
+
+**Create a selector for a specific application. Please refer to the example in the sample application, or the OSF documentation.**
+
+### Options:
+  ```PowerShell
+  -n, --name <selector-name>      Name of the selector to create.
+  --repository <repository-name>  Name of the repository to select.
+  --table <table-name>            Name of the table to select from repository.
+  --entity <entity-name>          Name of the entity to select from table.
+  --entityId <entityId>           A selector to return an entity by ID.
+  -h, --help                      display help for command
+  ```
+
+### Examples:
+  ```PowerShell
+  yarn occ create-selector --name mySelector --repository myRepository
+  yarn occ create-selector --name mySelector --repository myRepository --table myTable
+  yarn occ create-selector --name mySelector --repository myRepository --table myTable --entityId myEntityId
+  yarn occ create-selector --name mySelector --repository myRepository --table myTable --entity myEntity
+  yarn occ create-selector --repository myRepository
+  yarn occ create-selector --repository myRepository --table myTable
+  yarn occ create-selector --repository myRepository --table myTable --entityId myEntityId
+  yarn occ create-selector --repository myRepository --table myTable --entity myEntity
+  ```
+
+
+
+
+## 9) Create-Subscriber
+
+### Usage: yarn occ create-subscriber [appName] [options]
+
+**Create a subscriber for named application.**
+
+### Options:
+  ```PowerShell
+  -n, --name <subscriber-name>  Name of the subscriber plugin to create.
+  -h, --help                    display help for command
+  ```
+
+### Examples:
+  ```PowerShell
+  yarn occ create-subscriber --name mySubscriber
+  ```
+
+
+
+
+## 10) Create-Template
+
+### Usage: yarn occ create-template [appName] [options]
+
+**Creates a workspace template archive containing the given app.**
+
+### Options:
+  ```PowerShell
+  -V, --version                output the version number
+  -v, --verbose                Provides verbose logging where available
+  --no-verbose                 Disables verbose logging
+  --deployType <type>          The type of deployment to do (e.g. 'full')
+  --ignore <glob>              Path-like (e.g. '*.log') matching files to exclude from the deployment/accelerator zip (default: [])
+  --include <glob>             Path-like (e.g. '*.md') matching files to include in the deployment/accelerator zip (default: [])
   --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
   --no-localDevAppName         Ignore the local development application name configured for the application.
-  -l, --list                   Displays the current configuration settings
+  --dest <path>                The destination location for the output.
   -h, --help                   display help for command
   ```
 
 ### Examples:
   ```PowerShell
-  yarn occ configure-app --localDevAppName marcus-app
-  yarn occ configure-app --list
+  yarn occ create-template marcus-app --dest archives-directory
+  yarn occ create-template marcus-app --ignore *.log --deployType full --dest archives-directory
   ```
 
 
-## 5) Build
 
-### Usage: yarn occ build [appName] [options]
+## 11) Create-Widget
 
-**Build an occ application.**
+### Usage: yarn occ create-widget [appName] [options]
+
+**Create a widget plugin for a specific application.**
 
 ### Options:
   ```PowerShell
-  -V, --version     output the version number
-  -v, --verbose     Provides verbose logging where available
-  --no-verbose      Disables verbose logging
-  --legacy          Generate legacy client code when building
-                    in development mode.
-  -p, --production  Build an occ application in production
-                    mode.
-  -w, --watch       Watch for changes when building in
-                    development mode.
-  -h, --help        display help for command
+  -n, --name <widget-name>    Name of the widget plugin to create.
+  --template <template-name>  Name of the template to create the widget from (available templates: Blank, CurrencySelector). (default: "Blank")
+  --list-templates            Show list of available widget templates available.
+  -h, --help                  display help for command
   ```
-
 
 ### Examples:
   ```PowerShell
-  yarn occ build
-  yarn occ build marcus-app --production--watch
+  yarn occ create-widget --name MyWidget
+  yarn occ create-widget blank-store --name MyWidget
+  yarn occ create-widget blank-store --name MyWidget --template CurrencySelector
   ```
 
 
 
-## 6) Deploy
+## 12) Delete
+ 
+### Usage: yarn occ delete [appName] [options]
+
+**Deletes an occ application from OCC Admin Server.**
+
+### Options:
+  ```PowerShell
+  -V, --version                output the version number
+  -v, --verbose                Provides verbose logging where available
+  --no-verbose                 Disables verbose logging
+  -k, --appKey [key]           With this option you will be prompted for an application key (OAuth access token)
+  -s, --appServer <url>        Application server URL
+  -a, --appServerAdmin <url>   Application admin server URL    
+  -e, --serverEnv <env>        Cloud Commerce server environment to use
+  -p, --publish                With this option, any changes from the deploy/delete will be published.
+  --publishAll [confirm]       With this option, all changes in the publishing queue will be published. You will be prompted to confirm this option. Optionally, the prompt can be bypassed by specifying 'Y'
+  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
+  --no-localDevAppName         Ignore the local development application name configured for the application.
+  -h, --help                   display help for command
+  ```   
+
+### Examples:
+  ```PowerShell
+  yarn occ delete marcus-app
+  yarn occ delete marcus-app --publishAll
+  ```
+
+
+
+
+## 13) Deploy
 
 ### Usage: yarn occ deploy [appName] [options]
 
@@ -272,38 +443,8 @@
   ```
 
 
-## 7) Redeploy
 
-### Usage: yarn occ redeploy [options] [clusterId]
-
-**Instructs admin to resend either the preview or live deployment to the given cluster.**
-
-### Options:
-  ```PowerShell
-  -L, --live                  Operate in the live context.
-  --no-live                   Operate in the preview context. This is the default behavior.
-  -V, --version               output the version number
-  -v, --verbose               Provides verbose logging where available
-  --no-verbose                Disables verbose logging
-  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
-  -s, --appServer <url>       Application server URL
-  -a, --appServerAdmin <url>  Application admin server URL     
-  -e, --serverEnv <env>       Cloud Commerce server environment to use
-  --force                     Whether to force environments that already report the deployment as ACTIVE to also accept the redeployment
-  --debugMode                 Turn on development/debug mode on the given cluster. When used with redeploy, this implies '--force' to pick up the logging change. THIS WILL SLOW PERFORMANCE FOR MORE LOGGING.
-  --no-debugMode              Turn off development/debug mode on the given cluster. When used with redeploy, this implies '--force' to pick up the logging change.
-  -h, --help                  display help for command
-  ```
-
-
-### Examples:
-  ```PowerShell
-  yarn occ redeploy --appServerAdmin http://someserver.oracle.com --appKey
-  yarn occ redeploy storefront --live
-  ```
-
-
-## 8) Deploy-Log
+## 14) Deploy-Log
  
 ### Usage: yarn occ deploy-log [appName] [options]
 
@@ -345,7 +486,7 @@
   ```
   
 
-## 9) Deploy-Status
+## 15) Deploy-Status
 
 ### Usage: yarn occ deploy-status [appName] [options]
 
@@ -377,62 +518,8 @@
   ```
 
 
-## 10) Output
 
-### Usage: yarn occ output [appName] [options]
-
-**Generates the deployment files for the given app.**
-
-### Options:
-  ```PowerShell
-  -V, --version                output the version number
-  -v, --verbose                Provides verbose logging where available
-  --no-verbose                 Disables verbose logging
-  --deployType <type>          The type of deployment to do (e.g. 'full')
-  --ignore <glob>              Path-like (e.g. '*.log') matching files to exclude from the deployment/accelerator zip (default: [])
-  --include <glob>             Path-like (e.g. '*.md') matching files to include in the deployment/accelerator zip (default: [])
-  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
-  --no-localDevAppName         Ignore the local development application name configured for the application.
-  -h, --help                   display help for command
-  ```
-
-### Examples:
-  ```PowerShell
-  yarn occ output marcus-app
-  yarn occ output marcus-app --deployType full  --ignore *.log
-  ```
-
-
-## 11) Delete
- 
-### Usage: yarn occ delete [appName] [options]
-
-**Deletes an occ application from OCC Admin Server.**
-
-### Options:
-  ```PowerShell
-  -V, --version                output the version number
-  -v, --verbose                Provides verbose logging where available
-  --no-verbose                 Disables verbose logging
-  -k, --appKey [key]           With this option you will be prompted for an application key (OAuth access token)
-  -s, --appServer <url>        Application server URL
-  -a, --appServerAdmin <url>   Application admin server URL    
-  -e, --serverEnv <env>        Cloud Commerce server environment to use
-  -p, --publish                With this option, any changes from the deploy/delete will be published.
-  --publishAll [confirm]       With this option, all changes in the publishing queue will be published. You will be prompted to confirm this option. Optionally, the prompt can be bypassed by specifying 'Y'
-  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
-  --no-localDevAppName         Ignore the local development application name configured for the application.
-  -h, --help                   display help for command
-  ```   
-
-### Examples:
-  ```PowerShell
-  yarn occ delete marcus-app
-  yarn occ delete marcus-app --publishAll
-  ```
-
-
-## 12) Download
+## 16) Download
 
 ### Usage: yarn occ download [appName] [options]
 
@@ -462,94 +549,9 @@
   ```
 
 
-# 13) List-Apps
-
-### Usage: yarn occ list-apps [options]
-
-**List the available applications and clusters on the server.**
-
-### Options:
-  ```PowerShell
-  -j, --json                  Output the results as raw JSON instead of formatted text.
-  -V, --version               output the version number
-  -v, --verbose               Provides verbose logging where available
-  --no-verbose                Disables verbose logging
-  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
-  -s, --appServer <url>       Application server URL
-  -a, --appServerAdmin <url>  Application admin server URL     
-  -e, --serverEnv <env>       Cloud Commerce server environment to use
-  -h, --help                  display help for command
-  ```
-
-### Examples:
-  ```PowerShell
-  yarn occ list-apps
-  yarn occ list-apps --serverEnv development
-  ```
 
 
-## 14) Set-Logging-Options
-
-### Usage: yarn occ set-logging-options [options] [clusterId]
-
-**Sets various logging options for the given cluster.**
-
-### Options:
-  ```PowerShell
-  -V, --version               output the version number        
-  -v, --verbose               Provides verbose logging where available
-  --no-verbose                Disables verbose logging
-  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
-  -s, --appServer <url>       Application server URL
-  -a, --appServerAdmin <url>  Application admin server URL     
-  -e, --serverEnv <env>       Cloud Commerce server environment to use
-  -L, --live                  Operate in the live context.     
-  --no-live                   Operate in the preview context. This is the default behavior.
-  --appLogLevel <level>       Sets the application log level for the given cluster.
-  --systemLogLevel <level>    Sets the system log level for the given cluster.
-  -h, --help                  display help for command
-  ```
-
-### Examples:
-  ```PowerShell
-  yarn occ set-logging-options
-  yarn occ set-logging-options --appLogLevel 2
-  ```
-
-
-## 15) Upgrade
-
-### Usage: yarn occ upgrade [options] [version]
-
-**Upgrade the versions of OSF packages depended on throughout the workspace.**
-
-### Options:
-  ```PowerShell
-  --dryRun                    Do not make any actual changes, just list what changes would be made.
-  --latest                    Upgrade to the latest version, regardless of BREAKING CHANGES from the current OSF version      
-  --acceptDowngrade           If the current OSF version is too new for the OCC server, downgrade to the latest OSF version that matches the OCC server
-  --force                     Instead of exiting when unable to contact the registry/OCC Servers, found version incompatibilities, or encountered other errors, attempt to continue. MUST be used with a specific version of OSF (e.g. 'occ upgrade 2.0.0 --force')
-  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
-  -s, --appServer <url>       Application server URL
-  -a, --appServerAdmin <url>  Application admin server URL     
-  -e, --serverEnv <env>       Cloud Commerce server environment to use
-  --no-verifyOcc              Don't check the OCC Server version when determining what version of OSF to upgrade to (not recommended)
-  -V, --version               output the version number        
-  -v, --verbose               Provides verbose logging where available
-  --no-verbose                Disables verbose logging
-  -h, --help                  display help for command
-  ```
-
-### Examples:
-  ```PowerShell
-  yarn occ upgrade
-  yarn occ upgrade --dryRun
-  yarn occ upgrade --acceptDowngrade 4.0.0
-  yarn occ upgrade --latest
-  ```
-
-
-## 16) Download-Assets
+## 17) Download-Assets
 
 ### Usage: yarn occ download-assets [appName] [options]
 
@@ -584,21 +586,113 @@
   ```
 
 
-## 17) Upload-Search-Config
+# 18) List-Apps
 
-### Usage: yarn occ upload-search-config [appName] [options]
+### Usage: yarn occ list-apps [options]
 
-**Upload the search configuration**
+**List the available applications and clusters on the server.**
 
 ### Options:
   ```PowerShell
-  -V, --version                output the version number       
+  -j, --json                  Output the results as raw JSON instead of formatted text.
+  -V, --version               output the version number
+  -v, --verbose               Provides verbose logging where available
+  --no-verbose                Disables verbose logging
+  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
+  -s, --appServer <url>       Application server URL
+  -a, --appServerAdmin <url>  Application admin server URL     
+  -e, --serverEnv <env>       Cloud Commerce server environment to use
+  -h, --help                  display help for command
+  ```
+
+### Examples:
+  ```PowerShell
+  yarn occ list-apps
+  yarn occ list-apps --serverEnv development
+  ```
+
+
+
+## 19) List-EndPoints
+
+### Usage: yarn occ list-endpoints [options]
+
+**List all available endpoints from a Swagger API document.**   
+
+### Options:
+  ```PowerShell
+  --swagger <url | file>  The URL or Path of a Swagger API document to list all endpoints from.
+  -h, --help              display help for command
+  ```
+
+### Examples:
+  ```PowerShell
+  yarn occ list-endpoints --swagger http://example.com/catalogApi
+  yarn occ list-endpoints --swagger http://example.com/organizationApi
+  ```
+
+
+
+## 20) OCC Options
+
+### Usage: yarn occ [options] [command]
+
+### Options:
+  ```PowerShell
+  -V, --version                                         output the version number
+  -h, --help                                            display help for command
+  ```
+
+### Commands:
+  ```PowerShell
+  configure [options]                                   Updates workspace configuration.
+  configure-app [appName] [options]                     Updates application configuration.
+  build [appName] [options]                             Build an occ application.
+  deploy [appName] [options]                            Deploy an occ application bundle
+  redeploy [options] [clusterId]                        Instructs admin to resend either the preview or live deployment to the given cluster.
+  deploy-log [appName] [options]                        Query the deployment logs for an application.
+  deploy-status [appName] [options]                     Queries the deployment status for an application.
+  output [appName] [options]                            Generates the deployment files for the given app.
+  delete [appName] [options]                            Deletes an occ application from OCC Admin.
+  download [appName] [options]                          Download the current deployment for an application
+  list-apps [options]                                   List the available applications and clusters on the server.
+  set-logging-options [options] [clusterId]             Sets various logging options for the given cluster.
+  upgrade [options] [version]                           Upgrade the versions of OSF packages depended on throughout the workspace.
+  download-assets [appName] [options]                   Downloads the assets from design studio and writes them to the workspace
+  upload-search-config [appName] [options]              Upload the search configuration
+  upload-custom-typeahead-keywords [appName] [options]  Reads the custom keyword records from the 'config/search/data/keywords.js' in the app, and appends them to the existing elements in the '/gsdata/v1/cloud/data/keywords' record collection.
+  serve [appName] [options]                             Start presentation server [localhost]
+  create-template [appName] [options]                   Creates a workspace template archive containing the given app.        
+  create-widget [appName] [options]                     Create a widget plugin for a specific application.
+  create-fetcher [appName] [options]                    Create a fetcher for a specific application.
+  create-action [appName] [options]                     Create an action for a specific application.
+  create-selector [appName] [options]                   Create a selector for a specific application. Please refer to the example in the sample application, or the OSF documentation.       
+  create-endpoint [appName] [options]                   Create endpoint(s) for a URL or from a Swagger API document.
+  list-endpoints [options]                              List all available endpoints from a Swagger API document.
+  create-subscriber [appName] [options]                 Create a subscriber for named application.
+  create-app [options] [appPackageName]                 Create a new app in an existing workspace from an accelerator template.
+  validate-assets [appName]                             Validate all assets, including components, containers, pages and slots for the application.
+  version [options]                                     List the version of various OSF elements on the workspace, and the Oracle Commerce Cloud version.
+  help [command]                                        display help for command
+  ```
+
+
+
+
+## 21) Output
+
+### Usage: yarn occ output [appName] [options]
+
+**Generates the deployment files for the given app.**
+
+### Options:
+  ```PowerShell
+  -V, --version                output the version number
   -v, --verbose                Provides verbose logging where available
-  --no-verbose                 Disables verbose logging        
-  -k, --appKey [key]           With this option you will be prompted for an application key (OAuth access token)
-  -s, --appServer <url>        Application server URL
-  -a, --appServerAdmin <url>   Application admin server URL    
-  -e, --serverEnv <env>        Cloud Commerce server environment to use
+  --no-verbose                 Disables verbose logging
+  --deployType <type>          The type of deployment to do (e.g. 'full')
+  --ignore <glob>              Path-like (e.g. '*.log') matching files to exclude from the deployment/accelerator zip (default: [])
+  --include <glob>             Path-like (e.g. '*.md') matching files to include in the deployment/accelerator zip (default: [])
   --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
   --no-localDevAppName         Ignore the local development application name configured for the application.
   -h, --help                   display help for command
@@ -606,40 +700,46 @@
 
 ### Examples:
   ```PowerShell
-  yarn occ upload-search-config marcus-app
-  yarn occ upload-search-config marcus-app --no-localDevAppName
+  yarn occ output marcus-app
+  yarn occ output marcus-app --deployType full  --ignore *.log
   ```
 
 
-## 18) Upload-Custom-TypeHead-KeyWords
 
-### Usage: yarn occ upload-custom-typeahead-keywords [appName] [options]
+## 22) Redeploy
 
-**Reads the custom keyword records from the 'config/search/data/keywords.js' in the app, and appends them to the existing elements in the '/gsdata/v1/cloud/data/keywords' record collection.** 
+### Usage: yarn occ redeploy [options] [clusterId]
+
+**Instructs admin to resend either the preview or live deployment to the given cluster.**
 
 ### Options:
   ```PowerShell
-  -V, --version                output the version number       
-  -v, --verbose                Provides verbose logging where available
-  --no-verbose                 Disables verbose logging        
-  -k, --appKey [key]           With this option you will be prompted for an application key (OAuth access token)
-  -s, --appServer <url>        Application server URL
-  -a, --appServerAdmin <url>   Application admin server URL    
-  -e, --serverEnv <env>        Cloud Commerce server environment to use
-  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
-  --no-localDevAppName         Ignore the local development application name configured for the application.
-  -h, --help                   display help for command
+  -L, --live                  Operate in the live context.
+  --no-live                   Operate in the preview context. This is the default behavior.
+  -V, --version               output the version number
+  -v, --verbose               Provides verbose logging where available
+  --no-verbose                Disables verbose logging
+  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
+  -s, --appServer <url>       Application server URL
+  -a, --appServerAdmin <url>  Application admin server URL     
+  -e, --serverEnv <env>       Cloud Commerce server environment to use
+  --force                     Whether to force environments that already report the deployment as ACTIVE to also accept the redeployment
+  --debugMode                 Turn on development/debug mode on the given cluster. When used with redeploy, this implies '--force' to pick up the logging change. THIS WILL SLOW PERFORMANCE FOR MORE LOGGING.
+  --no-debugMode              Turn off development/debug mode on the given cluster. When used with redeploy, this implies '--force' to pick up the logging change.
+  -h, --help                  display help for command
   ```
+
 
 ### Examples:
   ```PowerShell
-  yarn occ upload-custom-typeahead-keywords marcus-app
-  yarn occ upload-custom-typeahead-keywords marcus-app --help
+  yarn occ redeploy --appServerAdmin http://someserver.oracle.com --appKey
+  yarn occ redeploy storefront --live
   ```
 
 
 
-## 19) Serve
+
+## 23) Serve
 
 ### Usage: yarn occ serve [appName] [options]
 
@@ -678,199 +778,127 @@
   ```
 
 
-## 20) Create-Template
-
-### Usage: yarn occ create-template [appName] [options]
-
-**Creates a workspace template archive containing the given app.**
-
-### Options:
-  ```PowerShell
-  -V, --version                output the version number
-  -v, --verbose                Provides verbose logging where available
-  --no-verbose                 Disables verbose logging
-  --deployType <type>          The type of deployment to do (e.g. 'full')
-  --ignore <glob>              Path-like (e.g. '*.log') matching files to exclude from the deployment/accelerator zip (default: [])
-  --include <glob>             Path-like (e.g. '*.md') matching files to include in the deployment/accelerator zip (default: [])
-  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
-  --no-localDevAppName         Ignore the local development application name configured for the application.
-  --dest <path>                The destination location for the output.
-  -h, --help                   display help for command
-  ```
-
-### Examples:
-  ```PowerShell
-  yarn occ create-template marcus-app --dest archives-directory
-  yarn occ create-template marcus-app --ignore *.log --deployType full --dest archives-directory
-  ```
 
 
+## 24) Set-Logging-Options
 
-## 21) Create-Widget
+### Usage: yarn occ set-logging-options [options] [clusterId]
 
-### Usage: yarn occ create-widget [appName] [options]
-
-**Create a widget plugin for a specific application.**
+**Sets various logging options for the given cluster.**
 
 ### Options:
   ```PowerShell
-  -n, --name <widget-name>    Name of the widget plugin to create.
-  --template <template-name>  Name of the template to create the widget from (available templates: Blank, CurrencySelector). (default: "Blank")
-  --list-templates            Show list of available widget templates available.
+  -V, --version               output the version number        
+  -v, --verbose               Provides verbose logging where available
+  --no-verbose                Disables verbose logging
+  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
+  -s, --appServer <url>       Application server URL
+  -a, --appServerAdmin <url>  Application admin server URL     
+  -e, --serverEnv <env>       Cloud Commerce server environment to use
+  -L, --live                  Operate in the live context.     
+  --no-live                   Operate in the preview context. This is the default behavior.
+  --appLogLevel <level>       Sets the application log level for the given cluster.
+  --systemLogLevel <level>    Sets the system log level for the given cluster.
   -h, --help                  display help for command
   ```
 
 ### Examples:
   ```PowerShell
-  yarn occ create-widget --name MyWidget
-  yarn occ create-widget blank-store --name MyWidget
-  yarn occ create-widget blank-store --name MyWidget --template CurrencySelector
+  yarn occ set-logging-options
+  yarn occ set-logging-options --appLogLevel 2
   ```
 
 
 
-## 22) Create-Fetcher
 
-### Usage: yarn occ create-fetcher [appName] [options]
+## 25) Upgrade
 
-**Create a fetcher for a specific application.**
+### Usage: yarn occ upgrade [options] [version]
+
+**Upgrade the versions of OSF packages depended on throughout the workspace.**
 
 ### Options:
   ```PowerShell
-  -n, --name <fetcher-name>        Name of the fetcher plugin to create.
-  --forComponent <component-name>  Create the fetcher for a specific component, default is to create a global fetcher.        
-  --endpoint <endpoint>            An Endpoint for fetcher to invoke.
-  --selector <selector>            A Selector to be used by the fetcher to check if data exists in the state.
-  -h, --help                       display help for command
+  --dryRun                    Do not make any actual changes, just list what changes would be made.
+  --latest                    Upgrade to the latest version, regardless of BREAKING CHANGES from the current OSF version      
+  --acceptDowngrade           If the current OSF version is too new for the OCC server, downgrade to the latest OSF version that matches the OCC server
+  --force                     Instead of exiting when unable to contact the registry/OCC Servers, found version incompatibilities, or encountered other errors, attempt to continue. MUST be used with a specific version of OSF (e.g. 'occ upgrade 2.0.0 --force')
+  -k, --appKey [key]          With this option you will be prompted for an application key (OAuth access token)
+  -s, --appServer <url>       Application server URL
+  -a, --appServerAdmin <url>  Application admin server URL     
+  -e, --serverEnv <env>       Cloud Commerce server environment to use
+  --no-verifyOcc              Don't check the OCC Server version when determining what version of OSF to upgrade to (not recommended)
+  -V, --version               output the version number        
+  -v, --verbose               Provides verbose logging where available
+  --no-verbose                Disables verbose logging
+  -h, --help                  display help for command
   ```
 
 ### Examples:
   ```PowerShell
-  yarn occ create-fetcher --name MyWidget
-  yarn occ create-fetcher --name myFetcher --endpoint anEndpoint --selector aSelector
-  yarn occ create-fetcher --name myFetcher --endpoint anEndpoint --selector aSelector --forComponent HelloWorld
+  yarn occ upgrade
+  yarn occ upgrade --dryRun
+  yarn occ upgrade --acceptDowngrade 4.0.0
+  yarn occ upgrade --latest
   ```
 
 
 
-## 23) Creation-Action
 
-### Usage: yarn occ create-action [appName] [options]
+## 26) Upload-Custom-TypeHead-KeyWords
 
-**Create an action for a specific application.**
+### Usage: yarn occ upload-custom-typeahead-keywords [appName] [options]
+
+**Reads the custom keyword records from the 'config/search/data/keywords.js' in the app, and appends them to the existing elements in the '/gsdata/v1/cloud/data/keywords' record collection.** 
 
 ### Options:
   ```PowerShell
-  -n, --name <action-name>  Name of the action to create. Defaults to the endpoint name if not specified.
-  --endpoint [endpoint]     Endpoint for action to invoke.     
-  --reducer                 Create a reducer that updates the application state.
-  -h, --help                display help for command
+  -V, --version                output the version number       
+  -v, --verbose                Provides verbose logging where available
+  --no-verbose                 Disables verbose logging        
+  -k, --appKey [key]           With this option you will be prompted for an application key (OAuth access token)
+  -s, --appServer <url>        Application server URL
+  -a, --appServerAdmin <url>   Application admin server URL    
+  -e, --serverEnv <env>        Cloud Commerce server environment to use
+  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
+  --no-localDevAppName         Ignore the local development application name configured for the application.
+  -h, --help                   display help for command
   ```
 
 ### Examples:
   ```PowerShell
-  yarn occ create-action --name myAction
-  yarn occ create-action --name myAction --endpoint
-  yarn occ create-action --endpoint anEndpoint
-  yarn occ create-action --name myAction --endpoint anEndpoint
-  yarn occ create-action --name myAction --reducer
+  yarn occ upload-custom-typeahead-keywords marcus-app
+  yarn occ upload-custom-typeahead-keywords marcus-app --help
   ```
 
 
 
-## 24) Create-Selector
+## 27) Upload-Search-Config
 
-### Usage: yarn occ create-selector [appName] [options]
+### Usage: yarn occ upload-search-config [appName] [options]
 
-**Create a selector for a specific application. Please refer to the example in the sample application, or the OSF documentation.**
+**Upload the search configuration**
 
 ### Options:
   ```PowerShell
-  -n, --name <selector-name>      Name of the selector to create.
-  --repository <repository-name>  Name of the repository to select.
-  --table <table-name>            Name of the table to select from repository.
-  --entity <entity-name>          Name of the entity to select from table.
-  --entityId <entityId>           A selector to return an entity by ID.
-  -h, --help                      display help for command
+  -V, --version                output the version number       
+  -v, --verbose                Provides verbose logging where available
+  --no-verbose                 Disables verbose logging        
+  -k, --appKey [key]           With this option you will be prompted for an application key (OAuth access token)
+  -s, --appServer <url>        Application server URL
+  -a, --appServerAdmin <url>   Application admin server URL    
+  -e, --serverEnv <env>        Cloud Commerce server environment to use
+  --localDevAppName <appName>  Specify a local development application name to use in the context of this workspace when doing application specific operations such as occ deploy, occ start, etc. This is useful when multiple developers are working on the same application, sharing an OCC instance, and want to isolate their OCC asset changes. Each local dev app name will appear as a separate application in Design Studio. Note that when an application is deployed using a local app name, it will not be installed in the preview or live sandboxes. Developers must launch a local server using dsAssetMode=remote to serve assets from Design Studio.
+  --no-localDevAppName         Ignore the local development application name configured for the application.
+  -h, --help                   display help for command
   ```
 
 ### Examples:
   ```PowerShell
-  yarn occ create-selector --name mySelector --repository myRepository
-  yarn occ create-selector --name mySelector --repository myRepository --table myTable
-  yarn occ create-selector --name mySelector --repository myRepository --table myTable --entityId myEntityId
-  yarn occ create-selector --name mySelector --repository myRepository --table myTable --entity myEntity
-  yarn occ create-selector --repository myRepository
-  yarn occ create-selector --repository myRepository --table myTable
-  yarn occ create-selector --repository myRepository --table myTable --entityId myEntityId
-  yarn occ create-selector --repository myRepository --table myTable --entity myEntity
+  yarn occ upload-search-config marcus-app
+  yarn occ upload-search-config marcus-app --no-localDevAppName
   ```
 
-
-
-## 25) Create-EndPoint
-
-### Usage: yarn occ create-endpoint [appName] [options]
-
-**Create endpoint(s) for a URL or from a Swagger API document.**
-
-### Options:
-  ```PowerShell
-  -n, --directoryName  <name>      The directory name under which to create endpoints, relative to the default path /src/plugins/endpoints.
-  --swagger <url | file>           The URL or Path of a Swagger API document from which to create endpoint(s).
-  --url <url>                      The URL/Origin for which to create endpoint(s).
-  --verb <method>                  Method for Non Swagger API document such as Get, Put, Post.
-  --endpoints <list-of-endpoints>  Comma-separated list of endpointIds to create from the Swagger API document.
-  -h, --help                       display help for command
-  ```  
-
-### Examples:
-  ```PowerShell
-  yarn occ create-endpoint --directoryName aDirectoryName --swagger http://example.com/catalogApi
-  yarn occ create-endpoint --directoryName aDirectoryName --swagger http://example.com/catalogApi --endpoints endpointId1,endpointId2
-  yarn occ create-endpoint --directoryName aDirectoryName --url http://example.com/catalogApi --verb [method]
-  yarn occ create-endpoint --swagger http://example.com/catalogApi
-  yarn occ create-endpoint --url http://example.com/catalogApi --verb [method]
-  ```
-
-
-
-## 26) List-EndPoints
-
-### Usage: yarn occ list-endpoints [options]
-
-**List all available endpoints from a Swagger API document.**   
-
-### Options:
-  ```PowerShell
-  --swagger <url | file>  The URL or Path of a Swagger API document to list all endpoints from.
-  -h, --help              display help for command
-  ```
-
-### Examples:
-  ```PowerShell
-  yarn occ list-endpoints --swagger http://example.com/catalogApi
-  yarn occ list-endpoints --swagger http://example.com/organizationApi
-  ```
-
-
-
-## 27) Create-Subscriber
-
-### Usage: yarn occ create-subscriber [appName] [options]
-
-**Create a subscriber for named application.**
-
-### Options:
-  ```PowerShell
-  -n, --name <subscriber-name>  Name of the subscriber plugin to create.
-  -h, --help                    display help for command
-  ```
-
-### Examples:
-  ```PowerShell
-  yarn occ create-subscriber --name mySubscriber
-  ```
 
 
 ## 28) Validate-Assets
@@ -889,6 +917,7 @@
   yarn occ validate-assets
   yarn occ validate-assets marcus-app
   ```
+
 
 
 
