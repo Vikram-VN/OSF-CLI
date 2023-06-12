@@ -2,13 +2,12 @@
 
 
 ## Table of Contents
----
+
   1) [Build](#1-build)
 
   2) [Configure](#2-configure)
   
   3) [Configure-App](#3-configure-app)
----
   4) [Create-Action](#4-creation-action)
 
   5) [Create-App](#5-create-app)
